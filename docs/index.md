@@ -1,81 +1,96 @@
 ---
-title: Simple curriculum module
-description: "Description, code fragments, etc."
+title: Endangered Species Management System (ESMS)
+description: An application used to manage endangered species investigation data
 layout: default
 ---
 
-Organize content into sections using Markdown headlines, which will automatically be used in the navigation links to the left. A few example sections (with explanatory text for how each section might be used) are shown below.
-
-## Value
-
-If the module is an assignment or practical exam problem, show point value&mdash;broken down into separate components, if appropriate.
-
 ## Summary
 
-Describe the module, exercise, or activity. In general, this section should not include a lot of code, but should instead provide a conceptual overview. If mathematical expressions are needed in this section (or any others), use LaTeX syntax in `$$…$$` blocks;[^1] these will be rendered by MathJax in the browser. For example, we can write
+_ESMS_ is a content management system designed to be used as an Android application for ease of
+ use in the field, while traveling as well as in the office. A user, depending upon access rights, can 
+ find and/or add/modify data regarding a given species of life. Personnel collect and organize data all 
+ with the purpose of providing managers, administrators and legislators with the information needed 
+ to determine the endangerment status of a species.
 
-```
-$$
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-$$
-```
+## Intended users &amp; user stories
 
-which will be rendered as 
+* A field biologist.
 
-$$
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-$$
+    > As a field biologist specializing in studying the habitat, numbers etc. of endangered living organisms, the ease of 
+using an app-based content management system to record and organize data would greatly improve the quantity and quality of
+work I could accomplish.        
+                        
+* Department Head.
 
-Simple mathematical expressions may also be written inline, using `$…$`. For example, `$c^2 = a^2 + b^2$` will be rendered as $c^2 = a^2 + b^2$.
+    > As a head of government department responsible for collecting, analyzing, and presenting data framed to make the case
+that a given species should have a lawfully valid endangered designation, I need a easy to access and easy to use system
+for managing both data collected and managing the personnel involved.
 
-[^1]: When the intention is to show a computation as expressed in code, a code block (or inline code statement) should be used; otherwise, mathematical notation is preferred. 
+## ESMS details
 
-## Requirements
+- A user should have a secured account to access the application. 
 
-Include functional and technical requirements. Include code fragments and test cases, as appropriate. For code fragments, use fenced code blocks, with language tags; inline references to variables, methods, classes, etc. should use backticks to indicate code elements.
+	- The following are the types of accounts. 
+		- VIEWER: The user can query the species data database to retrieve information. 
+		- RESEARCHER: The user that can submit data, retrieve it for analysis and categorization, or return it to the 
+		species data locker. 
+		- ADMIN: An account with special privileges that can manage other users’ activities on the data system.
 
-For example, a Java code fragment would be written in a fenced code block as 
+	- A researcher can have different access rights:
+		- APPRENTICE: no access to the data system.
+		- JUNIOR RESEARCHER: Read access to the data system.
+		- RESEARCHER: Write access to the data system
+		- PROJECT HEAD: Write access to the data system and read access to personnel system.
+		- DEPARTMENT HEAD: Write access to the data system and write access to personnel system.
 
-    ```java
-    public static void main(String[] args) {
-      System.out.println("Hello, world!");
-    }
-    ```
+	- Species endangerment can be classified based on their severity as follows.
+		- LEAST CONCERN: A species that has widespread and abundant population.
+		- NEAR THREATENED: Likely to qualify for threatened category in the near future.
+		- VULNERABLE:
+		- ENDANGERED:
+		- CRITICALLY ENDANGERED:
+		- EXTINCT IN THE WILD:
+		- EXTINCT:
 
-This will be rendered as
+	- Investigations can be classified by the research status as follows.
+		- SUBMITTED: recently introduced into the system.
+		- ACTIVE_RESEARCH: Data is being collected; the investigation/research is in some stage of process.
+		- UNDER_REVIEW: All data has been submitted, conclusions have been drawn, administrators/legal experts are doing 
+		what they do.
+		- CLOSED: All data and specimens have been archived because status has been determined.
 
-```java
-public static void main(String[] args) {
-  System.out.println("Hello, world!");
-}
-```
+## Client component
 
-## Hints
+* **Functionality**
 
-If the module is an assignment or practical exam problem&mdash;particularly if it's especially challenging or requires an approach that's not very obvious&mdash;it may be a good idea to include some general tips.
+    * The client app allows the user, depending on access rights, to enter data, access data already in the system, log and 
+access physical data locations, look up and even add personnel.
 
-## Attachments 
+    * If a user is in the field, data can be stored in the local Room database until a convenient place for uploading
+data can be made available.
 
-If the module includes `.pdf` or other attachments, link them here&mdash;as well as linking them inline (in the text), if appropriate. If there is more than one attachment, these should be formatted as an ordered or unordered list. 
+* *Device or external services used*
 
-## Links 
+    * Google Sign In
+    
+## Server component
 
-Links to content outside the curriculum module should appear here, as well as inline (if appropriate). If there is more than one link, an ordered or unordered list should be used. In general, it's recommended not only to include a standard Markdown link (specified with the `[…](…)` syntax), but also display the URL as a link (enclosed with `<…>`). For example,
+* **Functionality**
 
-```
-* [Deep Dive Coding Java+Android Bootcamp Curriculum Template](
-    https://github.com/ddc-java/curriculum-template/) 
-    (<https://github.com/ddc-java/curriculum-template/>)
-```
+The server component is the heart of the content management system: coordinating, categorizing, and updating persisted 
+data and personnel:
 
-will be rendered as
+* Transition a person to researcher status.
 
-* [Deep Dive Coding Java+Android Bootcamp Curriculum Template](
-    https://github.com/ddc-java/curriculum-template/) 
-    (<https://github.com/ddc-java/curriculum-template/>)
+* Setting information about a researcher such as name, id number, access rights, job assignment, etc.
 
-(Note that the line breaks are used here only to make the example easier to read. It is neither necessary nor recommended to break lines in this fashion in Markdown.)
+* Setting information about individual species under investigation, such as scientific name, common name, habit, current 
+endangerment status, etc.
 
-## Footnotes
+* Set up and access storage places containing collections of physical data.
 
-If any footnotes are defined &amp; referenced in the content, they will be displayed here. For example, note the footnote defined and referenced in the [Summary](#summary) section, above.
+* Criteria check off to determine the stage of an investigation.
+
+* **Device or external services used**
+
+    * Google OAuth 2.0 provider
