@@ -77,19 +77,19 @@ data can be made available.
 
 * **Functionality**
 
-The server component is the heart of the content management system: coordinating, categorizing, and updating persisted 
-data and personnel:
+    The server component is the heart of the content management system: coordinating, categorizing, and updating persisted 
+    data and personnel:
+    
+    * Transition a person to researcher status.
+    
+    * Setting information about a researcher such as name, id number, access rights, job assignment, etc.
+    
+    * Setting information about individual species under investigation, such as scientific name, common name, habit, current 
+    endangerment status, etc.
+    
+    * Set up and access storage places containing collections of physical data.
 
-* Transition a person to researcher status.
-
-* Setting information about a researcher such as name, id number, access rights, job assignment, etc.
-
-* Setting information about individual species under investigation, such as scientific name, common name, habit, current 
-endangerment status, etc.
-
-* Set up and access storage places containing collections of physical data.
-
-* Criteria check off to determine the stage of an investigation.
+    * Criteria check off to determine the stage of an investigation.
 
 * **Device or external services used**
 
